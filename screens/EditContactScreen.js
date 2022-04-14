@@ -2,9 +2,9 @@ import { StyleSheet, View, Image, TextInput, ScrollView, Alert } from 'react-nat
 import EditContactAppBar from "../components/EditContactAppBar";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useForm, useController } from "react-hook-form";
-import { Button, IconButton } from 'react-native-paper';
 import React, { useState, useEffect } from 'react';
 import * as ImagePicker from 'expo-image-picker';
+import { IconButton } from 'react-native-paper';
 import useSQLite from "../hooks/useSQLite";
 import { useSelector } from "react-redux";
 
@@ -66,7 +66,7 @@ export default function EditContactScreen({ navigation, route })
 
     return (
         <ScrollView style={styles.container}>
-            <EditContactAppBar navigation={navigation} />
+            <EditContactAppBar navigation={navigation} onEditContact={handleSubmit(onSubmit)} />
 
             <View style={styles.avatarIcon}>
                 {image == "" &&
@@ -97,11 +97,6 @@ export default function EditContactScreen({ navigation, route })
                 <Icon name="voicemail" size={35} color="#6200ee" style={styles.formIcon} />
                 <Input name="email" control={control} defaultValue={email} placeHolder="Enter email" />
             </View>
-
-            <Button style={styles.btn} mode="contained"
-                icon="account-edit" onPress={handleSubmit(onSubmit)}>
-                Edit Contact
-            </Button>
         </ScrollView >
     );
 }
@@ -130,12 +125,6 @@ const styles = StyleSheet.create({
         height: 200,
         width: 200,
         alignSelf: "center"
-    },
-    btn: {
-        width: "45%",
-        top: 10,
-        padding: 5,
-        alignSelf: "center",
     },
     formControl: {
         flex: 1,

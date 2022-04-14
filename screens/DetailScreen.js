@@ -1,5 +1,5 @@
-import { Button, Card, Title, Paragraph } from 'react-native-paper';
 import { StyleSheet, View, ScrollView } from 'react-native';
+import { Card, Title, Paragraph } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import DetailAppBar from "../components/DetailAppBar";
 import useSQLite from "../hooks/useSQLite";
@@ -17,12 +17,12 @@ export default function DetailScreen({ navigation, route })
         Get_Data_By_ID(id);
     }, []);
 
-    const handleEditContact = (id) =>
+    const handleEditContact = () =>
     {
         navigation.navigate("EditContact", { id });
     };
 
-    const handleDeleteContact = async (id) =>
+    const handleDeleteContact = async () =>
     {
         await Delete_Data(id);
         await Get_Data();
@@ -31,7 +31,11 @@ export default function DetailScreen({ navigation, route })
 
     return (
         <ScrollView style={styles.container}>
-            <DetailAppBar navigation={navigation} />
+            <DetailAppBar
+                navigation={navigation}
+                onDeleteContact={handleDeleteContact}
+                onEditContact={handleEditContact}
+            />
 
             <Card>
                 {img == "" &&
@@ -51,17 +55,6 @@ export default function DetailScreen({ navigation, route })
                     <Icon name="comment-dots" size={35} color="#6200ee"
                         style={{ flex: 1, top: 15 }} />
                 </Card.Content>
-
-                <Card.Actions style={styles.btnBar}>
-                    <Button style={styles.btn} mode="contained"
-                        icon="account-edit" onPress={() => handleEditContact(id)}>
-                        Edit
-                    </Button>
-                    <Button style={styles.btn} mode="contained"
-                        icon="delete-forever" onPress={() => handleDeleteContact(id)}>
-                        Delete
-                    </Button>
-                </Card.Actions>
             </Card>
         </ScrollView >
     );
@@ -88,15 +81,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
         marginTop: 5,
         marginBottom: 10
-    },
-    btnBar: {
-        flexDirection: "row",
-        justifyContent: "space-evenly",
-        marginTop: 15
-    },
-    btn: {
-        width: "30%",
-        padding: 5
     },
     cardContent: {
         flex: 1,

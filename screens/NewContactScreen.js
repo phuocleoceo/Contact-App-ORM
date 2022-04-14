@@ -2,8 +2,8 @@ import { StyleSheet, View, Image, TextInput, ScrollView, Alert } from 'react-nat
 import NewContactAppBar from "../components/NewContactAppBar";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useForm, useController } from "react-hook-form";
-import { Button, IconButton } from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
+import { IconButton } from 'react-native-paper';
 import useSQLite from "../hooks/useSQLite";
 import React, { useState } from 'react';
 
@@ -55,7 +55,7 @@ export default function NewContactScreen({ navigation })
 
     return (
         <ScrollView style={styles.container}>
-            <NewContactAppBar navigation={navigation} />
+            <NewContactAppBar navigation={navigation} onAddContact={handleSubmit(onSubmit)} />
 
             <View style={styles.avatarIcon}>
                 {image == "" &&
@@ -86,11 +86,6 @@ export default function NewContactScreen({ navigation })
                 <Icon name="voicemail" size={35} color="#6200ee" style={styles.formIcon} />
                 <Input name="email" control={control} placeHolder="Enter email" />
             </View>
-
-            <Button style={styles.btn} mode="contained"
-                icon="plus" onPress={handleSubmit(onSubmit)}>
-                Add Contact
-            </Button>
         </ScrollView >
     );
 }
@@ -120,12 +115,6 @@ const styles = StyleSheet.create({
         height: 200,
         width: 200,
         alignSelf: "center"
-    },
-    btn: {
-        width: "45%",
-        top: 10,
-        padding: 5,
-        alignSelf: "center",
     },
     formControl: {
         flex: 1,
