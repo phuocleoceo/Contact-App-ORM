@@ -3,14 +3,14 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useForm, useController } from "react-hook-form";
 import { Button, IconButton } from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
-import useSQLite from "../../hooks/useSQLite";
+import useSQLite from "../hooks/useSQLite";
 import React, { useState } from 'react';
 
-export default function NewContact({ navigation })
+export default function NewContactScreen({ navigation })
 {
     const { control, handleSubmit, formState: { errors } } = useForm();
     const [image, setImage] = useState("");
-    const { Add_Data } = useSQLite();
+    const { Add_Data, Get_Data } = useSQLite();
 
     const Input = ({ name, control, placeHolder }) =>
     {
@@ -48,6 +48,7 @@ export default function NewContact({ navigation })
     {
         const newContact = { ...data, img: image };
         await Add_Data(newContact);
+        await Get_Data();
         navigation.goBack();
     };
 
@@ -55,7 +56,7 @@ export default function NewContact({ navigation })
         <ScrollView style={styles.container}>
             <View style={styles.avatarIcon}>
                 {image == "" &&
-                    <Image style={styles.avatarImage} source={require("../../assets/people.png")} />}
+                    <Image style={styles.avatarImage} source={require("../assets/people.png")} />}
                 {image != "" &&
                     <Image style={styles.avatarImage} source={{ uri: image }} />}
                 <IconButton

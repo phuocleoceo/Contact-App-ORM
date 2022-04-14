@@ -1,12 +1,13 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CustomNavigationBar from './components/CustomNavigationBar';
 import { NavigationContainer } from '@react-navigation/native';
-import EditContact from './components/EditContact';
-import NewContact from './components/NewContact';
 import useSQLite from "./hooks/useSQLite";
 import React, { useEffect } from 'react';
-import Detail from './components/Detail';
-import Home from './components/Home';
+
+import EditContactScreen from './screens/EditContactScreen';
+import NewContactScreen from './screens/NewContactScreen';
+import DetailScreen from './screens/DetailScreen';
+import HomeScreen from './screens/HomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,10 +26,10 @@ export default function Navigation()
             <Stack.Navigator initialRouteName="Home" screenOptions={{
                 header: CustomNavigationBar,
             }}>
-                <Stack.Screen name="Home" component={Home} options={{ title: "Home" }} />
-                <Stack.Screen name="NewContact" component={NewContact} options={{ title: "New Contact" }} />
-                <Stack.Screen name="Detail" component={Detail} options={{ title: "Detail" }} />
-                <Stack.Screen name="EditContact" component={EditContact} options={{ title: "Edit Contact" }} />
+                <Stack.Screen name="Home" component={HomeScreen} />
+                <Stack.Screen name="Detail" component={DetailScreen} />
+                <Stack.Screen name="NewContact" component={NewContactScreen} />
+                <Stack.Screen name="EditContact" component={EditContactScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );

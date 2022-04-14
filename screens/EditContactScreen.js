@@ -4,13 +4,13 @@ import { useForm, useController } from "react-hook-form";
 import { Button, IconButton } from 'react-native-paper';
 import React, { useState, useEffect } from 'react';
 import * as ImagePicker from 'expo-image-picker';
-import useSQLite from "../../hooks/useSQLite";
+import useSQLite from "../hooks/useSQLite";
 import { useSelector } from "react-redux";
 
-export default function EditContact({ navigation, route })
+export default function EditContactScreen({ navigation, route })
 {
     const { id } = route.params;
-    const { Get_Data_By_ID, Update_Data } = useSQLite();
+    const { Get_Data_By_ID, Update_Data, Get_Data } = useSQLite();
     const { currentContact: { name, phone, email, img } } = useSelector(state => state.contact);
     const [image, setImage] = useState(img);
 
@@ -57,6 +57,7 @@ export default function EditContact({ navigation, route })
     {
         const updateContact = { ...data, id, img: image };
         await Update_Data(updateContact);
+        await Get_Data();
         // Set lai state cho Detail Screen
         await Get_Data_By_ID(id);
         navigation.goBack();
@@ -66,7 +67,7 @@ export default function EditContact({ navigation, route })
         <ScrollView style={styles.container}>
             <View style={styles.avatarIcon}>
                 {image == "" &&
-                    <Image style={styles.avatarImage} source={require("../../assets/people.png")} />}
+                    <Image style={styles.avatarImage} source={require("../assets/people.png")} />}
                 {image != "" &&
                     <Image style={styles.avatarImage} source={{ uri: image }} />}
                 <IconButton

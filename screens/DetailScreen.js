@@ -1,14 +1,14 @@
 import { Button, Card, Title, Paragraph } from 'react-native-paper';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import useSQLite from "../../hooks/useSQLite";
+import useSQLite from "../hooks/useSQLite";
 import { useSelector } from "react-redux";
 import React, { useEffect } from 'react';
 
-export default function NewContact({ navigation, route })
+export default function DetailScreen({ navigation, route })
 {
     const { id } = route.params;
-    const { Get_Data_By_ID, Delete_Data } = useSQLite();
+    const { Get_Data_By_ID, Delete_Data, Get_Data } = useSQLite();
     const { currentContact: { name, phone, email, img } } = useSelector(state => state.contact);
 
     useEffect(() =>
@@ -24,6 +24,7 @@ export default function NewContact({ navigation, route })
     const handleDeleteContact = async (id) =>
     {
         await Delete_Data(id);
+        await Get_Data();
         navigation.goBack();
     };
 
@@ -31,7 +32,7 @@ export default function NewContact({ navigation, route })
         <ScrollView style={styles.container}>
             <Card>
                 {img == "" &&
-                    <Card.Cover style={styles.avatarImg} source={require("../../assets/people.png")} />}
+                    <Card.Cover style={styles.avatarImg} source={require("../assets/people.png")} />}
                 {img != "" &&
                     <Card.Cover style={styles.avatarImg} source={{ uri: img }} />}
 
