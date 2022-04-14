@@ -2,7 +2,7 @@ import { Appbar, Searchbar } from 'react-native-paper';
 import useSQLite from "../hooks/useSQLite";
 import React, { useState } from "react";
 
-export default function CustomNavigationBar({ navigation, back })
+export default function HomeAppBar()
 {
     const { Get_Data, Search_Data } = useSQLite();
     const [searchShow, setSearchShow] = useState(false);
@@ -11,7 +11,6 @@ export default function CustomNavigationBar({ navigation, back })
     {
         // Khi thoat Search, tra lai full list contact
         if (searchShow) handleSearch("");
-
         setSearchShow(!searchShow)
     };
 
@@ -25,9 +24,8 @@ export default function CustomNavigationBar({ navigation, back })
 
     return (
         <Appbar.Header>
-            {back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
             {
-                (searchShow && !back) ?
+                searchShow ?
                     <Searchbar
                         placeholder="Search"
                         style={{ width: "90%" }}
@@ -35,7 +33,7 @@ export default function CustomNavigationBar({ navigation, back })
                     /> :
                     <Appbar.Content title="Contact App" />
             }
-            {!back && <Appbar.Action icon="account-search" onPress={handleShow} />}
+            <Appbar.Action icon="account-search" onPress={handleShow} />
         </Appbar.Header>
     );
 }
