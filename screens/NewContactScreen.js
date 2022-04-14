@@ -1,4 +1,5 @@
 import { StyleSheet, View, Image, TextInput, ScrollView, Alert } from 'react-native';
+import NewContactAppBar from "../components/NewContactAppBar";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useForm, useController } from "react-hook-form";
 import { Button, IconButton } from 'react-native-paper';
@@ -54,6 +55,8 @@ export default function NewContactScreen({ navigation })
 
     return (
         <ScrollView style={styles.container}>
+            <NewContactAppBar navigation={navigation} />
+
             <View style={styles.avatarIcon}>
                 {image == "" &&
                     <Image style={styles.avatarImage} source={require("../assets/people.png")} />}

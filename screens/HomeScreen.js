@@ -1,6 +1,7 @@
 import { RecyclerListView, DataProvider, LayoutProvider } from 'recyclerlistview';
 import { StyleSheet, View, Dimensions } from 'react-native';
 import ContactCard from "../components/ContactCard";
+import HomeAppBar from "../components/HomeAppBar";
 import useSQLite from "../hooks/useSQLite";
 import { useSelector } from 'react-redux';
 import { FAB } from 'react-native-paper';
@@ -30,6 +31,8 @@ export default function HomeScreen({ navigation })
 
     return (
         <View style={styles.container}>
+            <HomeAppBar />
+
             {
                 listContact.length > 0 &&
                 <RecyclerListView

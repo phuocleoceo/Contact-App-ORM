@@ -8,11 +8,6 @@ import NewContactScreen from './screens/NewContactScreen';
 import DetailScreen from './screens/DetailScreen';
 import HomeScreen from './screens/HomeScreen';
 
-import EditContactAppBar from "./components/EditContactAppBar";
-import NewContactAppBar from "./components/NewContactAppBar";
-import DetailAppBar from "./components/DetailAppBar";
-import HomeAppBar from "./components/HomeAppBar";
-
 const Stack = createNativeStackNavigator();
 
 export default function Navigation()
@@ -28,10 +23,10 @@ export default function Navigation()
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Home">
-                <Stack.Screen name="Home" component={HomeScreen} options={{ header: HomeAppBar }} />
-                <Stack.Screen name="Detail" component={DetailScreen} options={{ header: DetailAppBar }} />
-                <Stack.Screen name="NewContact" component={NewContactScreen} options={{ header: NewContactAppBar }} />
-                <Stack.Screen name="EditContact" component={EditContactScreen} options={{ header: EditContactAppBar }} />
+                <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="Detail" component={DetailScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="NewContact" component={NewContactScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="EditContact" component={EditContactScreen} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

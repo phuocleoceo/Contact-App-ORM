@@ -1,6 +1,7 @@
 import { Button, Card, Title, Paragraph } from 'react-native-paper';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import DetailAppBar from "../components/DetailAppBar";
 import useSQLite from "../hooks/useSQLite";
 import { useSelector } from "react-redux";
 import React, { useEffect } from 'react';
@@ -30,6 +31,8 @@ export default function DetailScreen({ navigation, route })
 
     return (
         <ScrollView style={styles.container}>
+            <DetailAppBar navigation={navigation} />
+
             <Card>
                 {img == "" &&
                     <Card.Cover style={styles.avatarImg} source={require("../assets/people.png")} />}
