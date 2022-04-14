@@ -26,32 +26,45 @@ expo-image-picker expo-sqlite expo-sqlite-orm
 
 ## Usage
 
-**1. Home**
-    <br/>
-    <br/>
-    ![image_home](assets/screen-shot/home.jpg)
-
-**2. Add**
-    <br/>
-    <br/>
-    ![image_add](assets/screen-shot/add.jpg)
-
-**3. Detail**
-    <br/>
-    <br/>
-    ![image_detail](assets/screen-shot/detail.jpg)
-
-**4. Edit**
-    <br/>
-    <br/>
-    ![image_edit](assets/screen-shot/edit.jpg)
-
-**5. Search**
-    <br/>
-    <br/>
-    ![image_search](assets/screen-shot/search.jpg)
-
-**6. Call**
-    <br/>
-    <br/>
-    ![image_call](assets/screen-shot/call.jpg)
+<table align="center">
+  
+  <tr>
+   <td align="center">
+      1. Home
+      <br/>
+      <img src="/assets/screen-shot/home.jpg" width=70% alt="Logo">
+    </td> 
+    <td align="center">
+      2. Add
+      <br/>
+      <img src="/assets/screen-shot/add.jpg" width=70% alt="Logo">
+    </td> 
+  </tr>
+  
+  <tr>
+   <td align="center">
+      3. Detail
+      <br/>
+      <img src="/assets/screen-shot/detail.jpg" width=70% alt="Logo">
+    </td> 
+    <td align="center">
+      4. Edit
+      <br/>
+      <img src="/assets/screen-shot/edit.jpg" width=70% alt="Logo">
+    </td> 
+  </tr>
+  
+  <tr>
+   <td align="center">
+      5. Search
+      <br/>
+      <img src="/assets/screen-shot/search.jpg" width=70% alt="Logo">
+    </td> 
+    <td align="center">
+      6. Call
+      <br/>
+      <img src="/assets/screen-shot/call.jpg" width=70% alt="Logo">
+    </td> 
+  </tr>
+  
+</table>
